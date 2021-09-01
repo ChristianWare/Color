@@ -4,12 +4,43 @@ import SingleColor from "./SingleColor";
 import Values from "values.js";
 
 function App() {
-  return;
-  <>
-    <h2>color generator project</h2>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-  </>;
+  const [color, setColor] = useState("");
+  const [error, setError] = useState(false);
+  const [list, setList] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      let colors = new Values(color).all(10);
+      console.log(colors);
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <section className='contianer'>
+        <h3>Color Generator</h3>
+        <form onSubmit={handleSubmit}>
+          <input
+            type='text'
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+            placeholder='#f15025'
+            className={`${error ? 'error' : null}`}
+          />
+          <button className='btn' type='submit'>
+            Submit
+          </button>
+        </form>
+      </section>
+      <section className='clolrs'>
+        <h4>List goes Here</h4>
+      </section>
+    </>
+  );
 }
 
 export default App;
