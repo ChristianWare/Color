@@ -8,6 +8,7 @@ function App() {
   <>
     <h2>color generator project</h2>
     <h1>Hello</h1>
+    <h1>Hello</h1>
   </>;
 }
 
